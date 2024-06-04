@@ -1,4 +1,4 @@
-Django
-gunicorn
-whitenoise
-vercel-wsgi
+Django>=3.2,<4.0
+gunicorn>=20.0,<21.0
+whitenoise>=5.0,<6.0
+vercel-wsgi>=0.5.1
