@@ -1,4 +1,0 @@
-Django
-gunicorn
-whitenoise
-vercel-wsgi
