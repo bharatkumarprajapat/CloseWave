@@ -1,0 +1,77 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CloseWave Tech</title>
+    <style>
+        /* Style the navigation menu */
+        .nav {
+            background-color: rgba(0, 0, 0, 0.5); /* Dark background color with some transparency */
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Align items to the start and end */
+            padding: 10px; /* Add padding for spacing */
+            color: white; /* Text color */
+            position: fixed; /* Position the navigation bar absolutely */
+            width: 100%; /* Take the full width of the viewport */
+            z-index: 1; /* Ensure navigation is on top of video */
+        }
+
+        /* Style the navigation links */
+        .nav ul {
+            list-style-type: none; /* Remove bullet points */
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav ul li {
+            display: inline; /* Display links horizontally */
+        }
+
+        .nav ul li a {
+            color: white; /* Text color */
+            padding: 10px 20px; /* Padding around the text */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        .nav ul li a:hover {
+            background-color: #555; /* Darker background color on hover */
+        }
+
+        /* Style the video container */
+        .video-container {
+            position: fixed; /* Fix the position of the video */
+            top: 0;
+            left: 0;
+            width: 100%; /* Take the full width of the viewport */
+            height: 100%; /* Take the full height of the viewport */
+            z-index: -1; /* Ensure the video is behind other content */
+            overflow: hidden; /* Hide any overflowing video content */
+        }
+
+        /* Style the video */
+        video {
+            width: 100vw; /* Take the full width of the viewport */
+            height: 100vh; /* Take the full height of the viewport */
+            object-fit: cover; /* Cover the entire container */
+        }
+    </style>
+</head>
+<body>
+<div class="video-container">
+    <video autoplay loop muted>
+        <source src="{% static 'images/bg.mp4' %}" type="video/mp4">
+        <!-- Add additional source elements for different video formats if needed -->
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<div class="nav">
+    <div>CloseWave</div>
+    <ul>
+        <li><a href="product">Our Product</a></li>
+        <li><a href="product">About Us</a></li>
+        <li><a href="product">Careers</a></li>
+    </ul>
+</div>
+</body>
+</html>

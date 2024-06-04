@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Training Session</title>
+    <style>
+        /* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus,
+.form-group input[type="time"]:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.schedule-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.schedule-button:hover {
+    background-color: #45a049;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Schedule Training Session</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="training_name">Training Name:</label>
+                {{ form.training_name }}
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                {{ form.date }}
+            </div>
+            <div class="form-group">
+                <label for="time">Time:</label>
+                {{ form.time }}
+            </div>
+            <div class="form-group">
+                <label for="trainer">Trainer:</label>
+                {{ form.trainer }}
+            </div>
+            <div class="form-group">
+                <label for="assigned_to">Assigned To:</label>
+                {{ form.assigned_to }}
+            </div>
+            <div class="form-group">
+                <label for="assignee">Assignee:</label>
+                {{ form.assignee }}
+            </div>
+            <button type="submit" class="schedule-button">Schedule</button>
+        </form>
+    </div>
+</body>
+</html>

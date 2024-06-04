@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DetailsFill</title>
+
+</head>
+<body>
+<form method="POST" class="post-form" action="manage">
+        {% csrf_token %}
+    <div class="container">
+<br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Enter Details</h3>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Id:</label>
+    <div class="col-sm-4">
+      {{ form.Emp_id }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee First Name:</label>
+    <div class="col-sm-4">
+      {{ form.First_name }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Last Name:</label>
+    <div class="col-sm-4">
+      {{ form.Last_name }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Emp Age:</label>
+    <div class="col-sm-4">
+      {{ form.Emp_age }}
+    </div>
+  </div>
+        <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Role:</label>
+    <div class="col-sm-4">
+      {{ form.Emp_Role }}
+    </div>
+  </div>
+        <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee City:</label>
+    <div class="col-sm-4">
+      {{ form.Emp_city }}
+    </div>
+  </div>
+        <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Salary:</label>
+    <div class="col-sm-4">
+      {{ form.Emp_salary }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+    </div>
+</form>
+</body>
+</html>

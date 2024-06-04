@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1500px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        label {
+            font-weight: bold;
+        }
+        textarea {
+            width: calc(100% - 20px); /* Adjusted width to account for padding */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        /* Added CSS to position the send message form at the bottom */
+        .send-message-form {
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Send Message</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sender</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message in messages %}
+                <tr>
+                    <td>{{ message.sender.username }}</td>
+                    <td>{{ message.content }}</td>
+                    <td>{{ message.created_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form method="post" class="send-message-form">
+            {% csrf_token %}
+            <label for="content">Message:</label><br>
+            <textarea id="content" name="content" rows="4" cols="50" required></textarea><br><br>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <div id="notification-section"></div>
+<script>
+        // JavaScript for checking and updating notification
+        function checkForNewMessages() {
+            fetch('/check_unread_messages/')
+            .then(response => response.json())
+            .then(data => {
+                if (data.unread_messages > 0) {
+                    document.getElementById('notification-section').innerHTML = `<p>You have ${data.unread_messages} new messages.</p>`;
+                } else {
+                    document.getElementById('notification-section').innerHTML = '';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Check for new messages every 5 seconds
+        setInterval(checkForNewMessages, 5000);
+    </script>
+</body>
+</html>

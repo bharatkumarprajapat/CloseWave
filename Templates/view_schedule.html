@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Training Schedule</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Training Schedule</h1>
+        <table>
+            <tr>
+                <th>Training Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Trainer</th>
+                <th>Action</th>
+            </tr>
+            {% for session in training_sessions %}
+            <tr>
+                <td>{{ session.training_name }}</td>
+                <td>{{ session.date }}</td>
+                <td>{{ session.time }}</td>
+                <td>{{ session.trainer }}</td>
+                <td>{{ session.assignee }}</td>
+                <td>{{ session.assigned_to }}</td>
+                <td><a href="https://meet.google.com/yay-hjnp-xbe?authuser=0"> <button>Join</button></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{% for message in received_messages %}
+    From: {{ message.sender.username }}<br>
+    Content: {{ message.content }}<br>
+    Sent: {{ message.timestamp }}<br><br>
+{% endfor %}

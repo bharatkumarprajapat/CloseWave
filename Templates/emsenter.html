@@ -1,0 +1,70 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        /* Navbar styles */
+        nav {
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background color with some transparency */
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Align items to the start and end */
+            padding: 10px; /* Add padding for spacing */
+            color: white; /* Text color */
+            position: fixed; /* Position the navigation bar absolutely */
+            width: 100%; /* Take the full width of the viewport */
+            z-index: 1; /* Ensure navigation is on top of video */
+        }
+
+        nav a {
+            color: white; /* Text color */
+            padding: 10px 20px; /* Padding around the text */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        nav a:hover {
+            background-color: #555 /* Dark gray background color on hover */
+        }
+
+        /* Video background styles */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Background Video -->
+<video autoplay muted loop>
+    <source src="{% static 'images/bg3.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<!-- Navigation Bar -->
+<nav>
+    <a href="profile">Profile</a>
+    <a href="#">Leave Management</a>
+    <a href="#">Task Assignment</a>
+    <a href="#">Goal Setting</a>
+    <a href="#">Performance Reviews</a>
+    <a href="#">Messaging</a>
+    <a href="#">Training Programs</a>
+    <a href="#">Employee Documents</a>
+    <a href="#">Surveys</a>
+</nav>
+
+</body>
+</html>

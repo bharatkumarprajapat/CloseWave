@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Detail</title>
+</head>
+<body>
+    <h1>{{ job.title }}</h1>
+    <p>Location: {{ job.location }}</p>
+    <p>Description: {{ job.description }}</p>
+
+    <h2>Apply for this Job</h2>
+    <form method="post" enctype="multipart/form-data" action="{% url 'submit_application' job.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Application</button>
+    </form>
+</body>
+</html>

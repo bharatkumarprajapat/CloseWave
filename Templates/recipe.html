@@ -1,0 +1,84 @@
+{% load static %}
+<html>
+<head>
+    <title>Navigation Bar</title>
+    <style>
+        /* Resetting default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Set background properties for the body */
+            background-color: #f0f0f0; /* Example background color */
+            /* Uncomment the line below and replace 'your_image.jpg' with the path to your background image if you prefer an image */
+            /* background-image: url("{% static 'images/your_image.jpg' %}"); */
+            /* Uncomment the line below if you want to repeat the background image */
+            /* background-repeat: repeat; */
+            /* Uncomment the line below if you want the background image to cover the entire body */
+            /* background-size: cover; */
+        }
+
+        /* Styling the navigation bar */
+        nav {
+            background-color: rgba(0, 0, 0, 0.5); /* Background color with transparency */
+            padding: 10px 0; /* Padding for top and bottom */
+            position: relative; /* Set position to relative to contain absolute positioning */
+        }
+
+        video {
+            position: absolute; /* Set position to absolute */
+            top: 0;
+            left: 0;
+            width: 100%; /* Cover the entire width of the parent element */
+            height: 100%; /* Cover the entire height of the parent element */
+            object-fit: cover; /* Ensure the video covers the entire area */
+            z-index: -1; /* Move the video behind other content */
+        }
+
+        ul {
+            list-style-type: none; /* Remove bullet points */
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Center align the list */
+        }
+
+        li {
+            display: inline; /* Display list items inline */
+            margin-right: 20px; /* Margin between list items */
+        }
+
+        li:last-child {
+            margin-right: 0; /* Remove margin from the last list item */
+        }
+
+        a {
+            color: #fff; /* Link color */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Bold font */
+            padding: 8px 15px; /* Padding for each link */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth transition for background color */
+        }
+
+        a:hover {
+            background-color: #555; /* Background color on hover */
+        }
+    </style>
+</head>
+<body>
+<video autoplay muted loop>
+            <source src="{% static 'images/recipee.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    <nav>
+
+        <ul>
+            <li><a href="{% url 'recipe_list' %}">Recipe List</a></li>
+            <li><a href="{% url 'add_recipe' %}">Add Recipe</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

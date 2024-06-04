@@ -1,0 +1,6 @@
+<h2>Your Performance Ratings</h2>
+<ul>
+    {% for performance in user_performance %}
+        <li>{{ performance.rating }}</li>
+    {% endfor %}
+</ul>

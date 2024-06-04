@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<form method="POST" class="post-form" action="update/{{employee.id}}">
+        {% csrf_token %}
+    <div class="container">
+<br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Update Details</h3>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Id:</label>
+    <div class="col-sm-4">
+        <input type="text" name="Emp_id" id="id_Emp_id" required maxlength="20" value="{{ employee.Emp_id }}"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee First Name:</label>
+    <div class="col-sm-4">
+        <input type="text" name="First_name" id="id_First_name" required maxlength="100" value="{{ employee.First_name }}" />
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Last Name:</label>
+    <div class="col-sm-4">
+        <input type="text" name="Last_name" id="id_Last_name" required maxlength="254" value="{{ employee.Last_name }}" />
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Age:</label>
+    <div class="col-sm-4">
+        <input type="text" name="Emp_age" id="id_Emp_age" required maxlength="15" value="{{ employee.Emp_age }}" />
+    </div>
+  </div>
+         <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Role:</label>
+    <div class="col-sm-4">
+        <input type="text" name="Emp_Role" id="id_Emp_Role" required maxlength="15" value="{{ employee.Emp_Role }}" />
+    </div>
+  </div>
+         <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee City:</label>
+    <div class="col-sm-4">
+        <input type="text" name="Emp_city" id="id_Emp_city" required maxlength="15" value="{{ employee.Emp_city }}" />
+    </div>
+  </div>
+         <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Salary:</label>
+    <div class="col-sm-4">
+        <input type="text" name="Emp_salary" id="id_Emp_salary" required maxlength="15" value="{{ employee.Emp_salary }}" />
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-success">Update</button>
+    </div>
+  </div>
+    </div>
+</form>
+</body>
+</html>

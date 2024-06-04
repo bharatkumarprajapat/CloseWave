@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #406BF7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        input[type="text"], input[type="submit"], input[type="password"] {
+            width: calc(100% - 22px); /* Adjusted width to account for padding */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    Username :{{username}}<input type="text" name="username" placeholder="username"> <br>
+    Password :{{password}}<input type="password" name="password" placeholder="password"> <br>
+    <input type="submit"> <br>
+
+   <a href="register">Register</a>
+
+</form>
+</body>
+</html>

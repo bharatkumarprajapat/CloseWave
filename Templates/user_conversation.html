@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Conversation</title>
+</head>
+<body>
+    <h1>User Conversation</h1>
+    <ul>
+        {% for message in messages %}
+            <li>{{ message.content }}</li>
+        {% endfor %}
+    </ul>
+    {% if receiver_id %}
+        <h2>Conversation with User ID: {{ receiver_id }}</h2>
+        <ul>
+            {% for message in messages %}
+                <li>{{ message.content }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

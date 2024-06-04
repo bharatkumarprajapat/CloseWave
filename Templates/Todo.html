@@ -1,0 +1,129 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TO-DO App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: transparent; /* Set background color to transparent */
+        }
+
+        video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* Set z-index to move the video behind other elements */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Add semi-transparent white background */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Set position to relative to make z-index work */
+            z-index: 1; /* Set z-index higher than video */
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .navbar h1 {
+            margin: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            color: #555;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 70%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 8px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<video autoplay loop muted>
+    <source src="{% static 'images/bgtodo2.mp4' %}" type="video/mp4"> <!-- Specify the path to your video file -->
+    Your browser does not support the video tag.
+</video>
+<div class="container">
+    <div class="navbar">
+        <h1>To-Do Application</h1>
+    </div>
+    <form action="todo" method="POST">
+        {% csrf_token %}
+        <input type="text" id="add" name="add" placeholder="Add a new task...">
+        <input type="submit" value="Add">
+    </form>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Task</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in Tasks %}
+        <tr>
+            <td>{{ task.id }}</td>
+            <td>{{ task.add }}</td>
+            <td>
+                <a href="editTodo/{{ task.id }}">Edit</a>
+                <a href="deleteTodo/{{ task.id }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

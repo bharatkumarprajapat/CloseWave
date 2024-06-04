@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Job Listing</title>
+    <style>
+        .job-container {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .job-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .job-description {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .job-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .apply-button {
+            align-self: flex-end;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .apply-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Job Listings</h1>
+    {% for job in jobs %}
+    <div class="job-container">
+        <div class="job-title">{{ job.title }}</div>
+        <div class="job-description" id="job-description-{{ forloop.counter }}">
+            {{ job.description | linebreaksbr | truncatewords:10 | safe }}
+            {% if job.description.split|length > 10 %}
+            <span id="read-more-{{ forloop.counter }}" style="cursor: pointer; color: blue;">...Read More</span>
+            <span id="more-text-{{ forloop.counter }}" style="display: none;">{{ job.description | linebreaksbr | safe }}</span>
+            <br> <!-- New line added here -->
+            <span id="view-less-{{ forloop.counter }}" style="display: none; cursor: pointer; color: blue;">...View Less</span>
+            {% endif %}
+        </div>
+        <div class="job-info">Posted by: {{ job.created_by.username }} on {{ job.created_at }}</div>
+        <a href="{% url 'apply_job' job.id %}" class="apply-button">Apply</a>
+    </div>
+    {% endfor %}
+
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    {% for job in jobs %}
+    var readMoreButton{{ forloop.counter }} = document.getElementById('read-more-{{ forloop.counter }}');
+    var viewLessButton{{ forloop.counter }} = document.getElementById('view-less-{{ forloop.counter }}');
+    var moreText{{ forloop.counter }} = document.getElementById('more-text-{{ forloop.counter }}');
+
+    readMoreButton{{ forloop.counter }}.addEventListener('click', function() {
+        if (moreText{{ forloop.counter }}.style.display === 'none') {
+            moreText{{ forloop.counter }}.style.display = 'inline';
+            readMoreButton{{ forloop.counter }}.style.display = 'none';
+            viewLessButton{{ forloop.counter }}.style.display = 'inline';
+        }
+    });
+
+    viewLessButton{{ forloop.counter }}.addEventListener('click', function() {
+        if (moreText{{ forloop.counter }}.style.display === 'inline') {
+            moreText{{ forloop.counter }}.style.display = 'none';
+            readMoreButton{{ forloop.counter }}.style.display = 'inline';
+            viewLessButton{{ forloop.counter }}.style.display = 'none';
+        }
+    });
+    {% endfor %}
+});
+</script>
+</html>
