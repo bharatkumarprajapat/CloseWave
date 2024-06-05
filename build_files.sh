@@ -1,6 +1,6 @@
-# build_files.sh
+# Install dependencies
 pip install -r requirements.txt
 
-# make migrations
+# Run Python commands
+python manage.py collectstatic --noinput
 python manage.py migrate
-python manage.py collectstatic

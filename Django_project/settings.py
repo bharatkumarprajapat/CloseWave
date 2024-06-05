@@ -13,6 +13,7 @@ import os.path
 from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -88,12 +89,16 @@ WSGI_APPLICATION = 'Django_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("Tech_Django"),
-        'USER': os.environ.get("postgres"),
-        'PASSWORD': os.environ.get("0000"),
-        'HOST': os.environ.get("localhost"),
+        'NAME': os.environ.get('Tech_Django'),
+        'USER': os.environ.get('postgres'),
+        'PASSWORD': os.environ.get('0000'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
     }
 }
+print("Database Name:", os.environ.get('Tech_Django'))
+print("Database User:", os.environ.get('postgres'))
+print("Database Password:", os.environ.get('POSTGRES_PASSWORD'))
+print("Database Host:", os.environ.get('POSTGRES_HOST'))
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
