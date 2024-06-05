@@ -2,15 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "Django_project/wsgi.py",
+      "src": "Closewave/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11.5" }
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
     },
     {
       "src": "build_files.sh",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "staticfiles"
+        "distDir": "staticfiles_build"
       }
     }
   ],
@@ -21,7 +21,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "Django_project/wsgi.py"
+      "dest": "Closewave/wsgi.py"
     }
   ]
 }
