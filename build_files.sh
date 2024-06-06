@@ -17,6 +17,10 @@ echo "Activating virtual environment..."
 source $VENV_DIR/Scripts/activate
 
 # Upgrade pip
+echo "Upgrading pip..."
+python -m ensurepip --upgrade
+python -m pip install --upgrade pip
+pip install --upgrade pip
 
 # Install dependencies
 if [ -f "requirements.txt" ]; then
