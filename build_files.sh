@@ -1,6 +1,3 @@
-# Install dependencies
 pip install -r requirements.txt
 
-# Run Python commands
-python manage.py collectstatic --noinput
-python manage.py migrate
+python3.12 manage.py collectstatic --noinput
