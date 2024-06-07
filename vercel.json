@@ -2,9 +2,9 @@
   "version": 2,
   "builds": [
     {
-      "src": "Closewave/wsgi.py",
+      "src": "Djnago_project/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.10.7" }
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12.3" }
     },
     {
       "src": "build_files.sh",
@@ -21,7 +21,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "Closewave/wsgi.py"
+      "dest": "Djnago_project/wsgi.py"
     }
   ]
 }
