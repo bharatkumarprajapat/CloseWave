@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-2&1w+o-9m4=kt2y2!xxr*r+^r_xt$e760v3*2pu4*vwu@x$wdv
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', '.now.sh']
+# ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 # Or * to allow all
 ALLOWED_HOSTS = ['*']
 
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts_Emp',
+    'backend',
 
 ]
 
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'accounts_Emp.urls'
+ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
     {
@@ -76,30 +76,29 @@ WSGI_APPLICATION = 'Django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Tech_Django',
-#         'USER': 'postgres',
-#         'PASSWORD': '0000',
-#         'HOST': 'localhost',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('Tech_Django'),
-        'USER': os.environ.get('postgres'),
-        'PASSWORD': os.environ.get('0000'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Tech_Django',
+        'USER': 'postgres',
+        'PASSWORD': '0000',
+        'HOST': 'localhost',
     }
 }
 
-print("Database Name:", os.environ.get('Tech_Django'))
-print("Database User:", os.environ.get('postgres'))
-print("Database Password:", os.environ.get('POSTGRES_PASSWORD'))
-print("Database Host:", os.environ.get('POSTGRES_HOST'))
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('Tech_Django'),
+#         'USER': os.environ.get('postgres'),
+#         'PASSWORD': os.environ.get('0000'),
+#         'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+#     }
+# }
+# print("Database Name:", os.environ.get('Tech_Django'))
+# print("Database User:", os.environ.get('postgres'))
+# print("Database Password:", os.environ.get('POSTGRES_PASSWORD'))
+# print("Database Host:", os.environ.get('POSTGRES_HOST'))
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
