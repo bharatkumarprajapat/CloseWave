@@ -14,6 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 import os
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-2&1w+o-9m4=kt2y2!xxr*r+^r_xt$e760v3*2pu4*vwu@x$wdv
 DEBUG = True
 # ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 # Or * to allow all
-ALLOWED_HOSTS = ['*']
+
 
 # Application definition
 
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'backend',
+    'accounts_Emp',
 
 ]
 
@@ -53,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'backend.urls'
+ROOT_URLCONF = 'accounts_Emp.urls'
 
 TEMPLATES = [
     {
